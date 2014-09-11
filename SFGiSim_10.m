@@ -22,7 +22,7 @@ function varargout = SFGiSim_10(varargin)
 
 % Edit the above text to modify the response to help SFGiSim_10
 
-% Last Modified by GUIDE v2.5 19-Aug-2014 14:19:38
+% Last Modified by GUIDE v2.5 11-Sep-2014 11:12:41
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -995,3 +995,19 @@ function edit_zDataName_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in push_calcRefIndBL.
+function push_calcRefIndBL_Callback(hObject, eventdata, handles)
+% hObject    handle to push_calcRefIndBL (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+fcn_refractionIndexBL(handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function push_calcRefIndBL_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to push_calcRefIndBL (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
