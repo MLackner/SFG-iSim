@@ -1,23 +1,23 @@
 function [zData] = fcn_plotFcn...
-    (params,xData,yData,...
+    (handles,xData,yData,...
     labelArray,holdFig,data_id,options)
 
-%% Extract 'params' array
-angVis = params(2);
-wlVis = params(3);
-angIR = params(4);
-wlIR = params(5);
-n1_sf = params(6);
-n2_sf = params(7);
-nBL_sf = params(8);
-n1_vis = params(9);
-n2_vis = params(10);
-nBL_vis = params(11);
-n1_ir = params(12);
-n2_ir = params(13);
-nBL_ir = params(14);
-hypRatio = params(15);
-bondAngle = params(16);
+%% Get Setup parameters
+angVis = fcn_dtr(str2double(get(handles.edit_angVis,'String')));
+wlVis = str2double(get(handles.edit_wlVis,'String'))*10^-9;
+angIR = fcn_dtr(str2double(get(handles.edit_angIR,'String')));
+wlIR = str2double(get(handles.edit_wlIR,'String'))*10^-9;
+n1_sf = str2double(get(handles.edit_n1_sf,'String'));
+n2_sf = str2double(get(handles.edit_n2_sf,'String'));
+nBL_sf = str2double(get(handles.edit_nBL_sf,'String'));
+n1_vis = str2double(get(handles.edit_n1_vis,'String'));
+n2_vis = str2double(get(handles.edit_n2_vis,'String'));
+nBL_vis = str2double(get(handles.edit_nBL_vis,'String'));
+n1_ir = str2double(get(handles.edit_n1_ir,'String'));
+n2_ir = str2double(get(handles.edit_n2_ir,'String'));
+nBL_ir = str2double(get(handles.edit_nBL_ir,'String'));
+hypRatio = str2double(get(handles.edit_hypRatio,'String'));
+bondAngle = fcn_dtr(str2double(get(handles.edit_bondAngle,'String'))/2);
 
 %% 3D Plot preparations (if yData isn't empty)
 if isempty(yData) == 0
