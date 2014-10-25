@@ -74,11 +74,9 @@ function zData = fcn_plotPreparation(handles)
     if get(handles.radio_zData_intensity,'Value') == 1
         % If Intensity is selected
         options.zData = 1;
-        fprintf('Plotting intensity.\n')
     elseif get(handles.radio_zData_suscept,'Value') == 1
         % If Susceptibility is selected
         options.zData = 2;
-        fprintf('Plotting susceptibility.\n')
     end
     
     % Combine data_ids in array
