@@ -263,6 +263,14 @@ end
 % Get figure
 h = handles.figure1;
 myFig = getappdata(h,'myFig');
+if ~ishandle(myFig)
+    % Create new figure
+    myFig = figure;
+    hold on
+    % Store figure
+    h = handles.figure1;
+    setappdata(h,'myFig',myFig)
+end
 figure(myFig)
 hold on
 
@@ -274,7 +282,7 @@ if isempty(yData) == 1
         % Set box on
         box on
         % Plot the data
-        plot(xData,zData,[options.style options.color])
+        p = plot(xData,zData,[options.style options.color]);
         % Set axis scaling
         ylim(zRange);
         xlim(xRange);
@@ -289,7 +297,7 @@ if isempty(yData) == 1
             % Select subplot
             subplot(1,3,i)
             % Plot the data
-            plot(xData,zData{i},[options.style options.color])
+            p = plot(xData,zData{i},[options.style options.color]);
             
             i = i + 1;
         end
@@ -302,7 +310,7 @@ if isempty(yData) == 0
         % Make RATIO plot
         
         % Plot the data
-        mesh(xData,yData,zData)
+        p = mesh(xData,yData,zData);
         
         % Make colorbar
         t = colorbar('peer',gca);
@@ -335,7 +343,7 @@ if isempty(yData) == 0
             % Select subplot
             subplot(1,3,i)
             % Plot the data
-            mesh(xData,yData,zData{i})
+            p = mesh(xData,yData,zData{i});
             
             % Make colorbar
             t = colorbar('peer',gca);
@@ -418,6 +426,11 @@ if isempty(yData) == 1 && options.ratiosSelect == 0
         i = i + 1;
     end
 end
+
+%% Make legend
+set(p,'DisplayName',get(handles.edit_dispName,'String'))
+legend('off')
+legend('show')
 
         
 end
