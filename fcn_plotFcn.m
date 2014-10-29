@@ -1,6 +1,6 @@
 function [zData] = fcn_plotFcn...
     (handles,xData,yData,...
-    labelArray,holdFig,data_id,options)
+    labelArray,data_id,options)
 
 %% Get Setup parameters
 angVis = fcn_dtr(str2double(get(handles.edit_angVis,'String')));
@@ -260,6 +260,12 @@ elseif options.zData == 2 && options.ratiosSelect == 1
 end
 
 %% Make 2D plots
+% Get figure
+h = handles.figure1;
+myFig = getappdata(h,'myFig');
+figure(myFig)
+hold on
+
 if isempty(yData) == 1
     % set limits of y axis
     ylim(zRange);
@@ -267,12 +273,6 @@ if isempty(yData) == 1
         % Make RATIO plot
         % Set box on
         box on
-        % Check if 'plot in current' is selceted
-        if holdFig == 1
-            hold on
-        else
-            hold off
-        end
         % Plot the data
         plot(xData,zData,[options.style options.color])
         % Set axis scaling
@@ -285,14 +285,9 @@ if isempty(yData) == 1
         % Make NORMAL plot
         i = 1;
         while i <= 3
+            hold on
             % Select subplot
             subplot(1,3,i)
-            % Check if 'plot in current' is selceted
-            if holdFig == 1
-                hold on
-            else
-                hold off
-            end
             % Plot the data
             plot(xData,zData{i},[options.style options.color])
             
@@ -305,12 +300,6 @@ end
 if isempty(yData) == 0
     if options.ratiosSelect == 1
         % Make RATIO plot
-        % Check if 'plot in current' is selceted
-        if holdFig == 1
-            hold on
-        else
-            hold off
-        end
         
         % Plot the data
         mesh(xData,yData,zData)
@@ -345,12 +334,6 @@ if isempty(yData) == 0
         while i <= 3
             % Select subplot
             subplot(1,3,i)
-            % Check if 'plot in current' is selceted
-            if holdFig == 1
-                hold on
-            else
-                hold off
-            end
             % Plot the data
             mesh(xData,yData,zData{i})
             

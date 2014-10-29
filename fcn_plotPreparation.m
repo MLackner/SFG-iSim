@@ -161,23 +161,6 @@ function zData = fcn_plotPreparation(handles)
         options.tiltDist = [];
     end
     
-    %% Check if "Plot in current figure" is selected
-    holdFig = get(handles.check_plotInCurrent,'Value');
-    if holdFig == 0
-        % Make new figure
-        FigName = figure;
-        setappdata(hMainGui, 'FigName', FigName);
-        % switch hold to 'off' (may not be needed)
-        hold off
-    else
-        hMainGui = getappdata(0, 'hMainGui');
-        FigName = getappdata(hMainGui, 'FigName');
-        % Bring figure to front
-        figure(FigName);
-        % Switch hold to 'on' (may not be needed)
-        hold on
-    end
-    
     %% Get Axes Settings
     % X Axis
     xstr = get(handles.edit_xRange,'String');
@@ -244,6 +227,6 @@ function zData = fcn_plotPreparation(handles)
     %% Pass to plotting function
     zData = fcn_plotFcn...
         (handles,xData,yData,...
-        labelArray,holdFig,data_id,options);
+        labelArray,data_id,options);
 
 end
