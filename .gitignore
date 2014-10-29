@@ -42,6 +42,9 @@ slprj/
 # Project File
 *.prj
 
+# App installers
+*.mlappinstall
+
 ### Folders ###
 ##-------------------------------
 ## Ignore the following folders
