@@ -263,7 +263,7 @@ end
 % Get figure
 h = handles.figure1;
 myFig = getappdata(h,'myFig');
-if ~ishandle(myFig)
+if (isempty(myFig) || ~ishandle(myFig))
     % Create new figure
     myFig = figure;
     hold on
